@@ -45,4 +45,5 @@ jobs:
         echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> .env
         echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> .env
         echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
+        echo "BACKEND_URL=http://backend:8000" >> mcp/.env
         docker compose up -d
