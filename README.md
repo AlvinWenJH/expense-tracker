@@ -41,19 +41,19 @@
     ```
     Refer to `notebook/no4.ipynb`
     ```
-5. Create a platform with UI, for
-a. Upload food online receipt
-b. Extract with computer vision
-c. Get the insight on the receipt, and store it to DB.
-d. Design and implement the AI tools to make sure whenever user asking,
-- “What food did i buy yesterday”
-- “Give me total expenses for food on 20 June”
-- “Where did i buy hamburger from last 7 day”
-The LLM can answer it.
-e. Wrap your application into a container image using docker, and run it in your
-local.
-f. Write CI/CD to wrap your application into the container. You can use
-github-actions or gitlab-ci.
+5. Create a platform with UI, for <br>
+    a. Upload food online receipt <br>
+    b. Extract with computer vision <br>
+    c. Get the insight on the receipt, and store it to DB.
+    d. Design and implement the AI tools to make sure whenever user asking,<br>
+        - “What food did i buy yesterday” <br>
+        - “Give me total expenses for food on 20 June” <br> 
+        - “Where did i buy hamburger from last 7 day” <br>
+    The LLM can answer it.<br>
+    e. Wrap your application into a container image using docker, and run it in your
+    local.<br>
+    f. Write CI/CD to wrap your application into the container. You can use
+    github-actions or gitlab-ci.<br>
 
     ```
     git clone https://github.com/AlvinWenJH/expense-tracker.git
@@ -70,5 +70,11 @@ github-actions or gitlab-ci.
 
     ![image.png](assets/image2.png)
 
+## Explanation Video
+https://drive.google.com/file/d/1FMj1qixTKOm7dt0-eKav2K-ah3ypwoVj/view?usp=sharing
+
+## Contact
+- alvin.wenjianhong@gmail.com
+- https://www.linkedin.com/in/alvin-wen/
 
 
