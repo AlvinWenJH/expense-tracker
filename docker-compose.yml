@@ -26,6 +26,7 @@ services:
 
   backend:
     container_name: backend
+    image: alvinwen/expense-tracker-backend
     build:
       context: ./backend
       dockerfile: Dockerfile.backend
@@ -42,7 +43,7 @@ services:
   
   mcp:
     container_name: mcp
-    image: tracker-mcp
+    image: alvinwen/expense-tracker-mcp
     build:
       context: mcp
       dockerfile: ./Dockerfile
