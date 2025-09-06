@@ -1,0 +1,73 @@
+x-base-config: &base-config
+  restart: always
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+  networks:
+    - app_net
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+    <<: *base-config
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    env_file:
+      - .env
+    volumes:
+      - ./backend/app:/app/app 
+    ports: 
+      - 8000:8000
+    depends_on:
+      - postgres
+    <<: *base-config
+    restart: unless-stopped
+  
+  mcp:
+    container_name: mcp
+    image: tracker-mcp
+    build:
+      context: mcp
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./mcp:/app
+    env_file:
+      - mcp/.env
+    stdin_open: true
+    ports:
+      - 8123:8000
+    <<: *base-config
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+    <<: *base-config
+
+networks:
+  app_net:
+    name: food-tracker
+    driver: bridge
+
+volumes:
+  postgres-data:
