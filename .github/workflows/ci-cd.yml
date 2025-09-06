@@ -28,7 +28,7 @@ jobs:
         context: ./backend
         file: ./backend/Dockerfile.backend
         push: true
-        tags: alvinwen/spx-backend:latest
+        tags: alvinwen/expense-tracker-backend:latest
     
     - name: Build and push MCP
       uses: docker/build-push-action@v5
@@ -36,7 +36,7 @@ jobs:
         context: ./mcp
         file: ./mcp/Dockerfile
         push: true
-        tags: alvinwen/spx-mcp:latest
+        tags: alvinwen/expense-tracker-mcp:latest
     
     - name: Deploy with docker-compose
       run: |
